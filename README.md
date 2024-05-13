@@ -20,5 +20,5 @@ This guide outlines the steps to set up a 3-tier application architecture on Kub
 - Establish connectivity between the server and the backend application using External Name Service.
 
 ##  Archetectuer
-![Alt Text](/image/p.png)
+![alt text](Image/p.png)
 
