@@ -23,10 +23,9 @@ This guide outlines the steps to set up a 3-tier application architecture on Kub
 ![alt text](Image/p.png)
 
 --------------------------------------------------------------------------
-
 # Azure VM Metadata Importer
 
-This script retrieves metadata of a virtual machine (VM) from Azure and allows you to save it in a JSON file. You can also query specific metadata keys.
+This Python script retrieves metadata of a virtual machine (VM) from Azure and allows you to save it in a JSON file. You can also query specific metadata keys.
 
 ## Requirements
 
@@ -36,52 +35,91 @@ This script retrieves metadata of a virtual machine (VM) from Azure and allows y
 
 ## Installation
 
-1. Install the required Python packages using pip:
-
+1. Ensure you have Python 3.x installed on your system.
+2. Install the required Python packages using pip:
     ```bash
     pip install azure-mgmt-compute azure-identity
     ```
-
-2. Clone or download this repository.
-
-3. Navigate to the directory where you cloned/downloaded the repository.
+3. Clone or download this repository.
 
 ## Usage
 
-1. Import the `get_vm_metadata`, `save_metadata`, and `query_vm_metadata` functions into your script or use the provided `main.py` script.
-
-2. Update the `subscription_id`, `resource_group_name`, and `vm_name` variables in the `main()` function with your Azure subscription ID, resource group name, and VM name respectively.
-
+1. Import the script functions into your Python code or use the provided `main.py` script.
+2. Update the variables `subscription_id`, `resource_group_name`, and `vm_name` in the `main()` function with your Azure subscription ID, resource group name, and VM name respectively.
 3. Run the script:
-
     ```bash
     python main.py
     ```
-
 4. Follow the prompts to save the VM metadata and query specific keys.
 
-## Example
+## Functions
 
-```python
-from azure.identity import DefaultAzureCredential
-from azure.mgmt.compute import ComputeManagementClient
+### `get_vm_metadata(subscription_id, resource_group_name, vm_name)`
 
-def get_vm_metadata(subscription_id, resource_group_name, vm_name):
-    # Function definition
+This function retrieves metadata of the specified virtual machine from Azure.
 
-def save_metadata(metadata):
-    # Function definition
+- `subscription_id`: Azure subscription ID.
+- `resource_group_name`: Name of the resource group where the VM is located.
+- `vm_name`: Name of the virtual machine.
 
-def query_vm_metadata(metadata, key):
-    # Function definition
+### `save_metadata(metadata)`
 
-def main():
-    # Main function
+This function saves the VM metadata to a JSON file named `metadata.json`.
 
-if __name__ == "__main__":
-    main()
+- `metadata`: Metadata of the virtual machine obtained from `get_vm_metadata` function.
 
+### `query_vm_metadata(metadata, key)`
 
+This function queries a specific key from the VM metadata.
+
+- `metadata`: Metadata of the virtual machine obtained from `get_vm_metadata` function.
+- `key`: Key to query from the metadata.
+
+## Output Scenarios
+
+### Successful Metadata Retrieval and Saving
+
+```bash
+VM metadata has been stored in metadata.json
+```
+
+### Querying Specific Metadata Key
+
+```bash
+Enter the key you want to query: osProfile
+{
+    osProfile": {
+            "computerName": "Windowsrdpterra",
+            "adminUsername": "sumer",
+            "windowsConfiguration": {
+                "provisionVMAgent": true,
+                "enableAutomaticUpdates": true,
+                "patchSettings": {
+                    "patchMode": "AutomaticByOS",
+                    "enableHotpatching": false,
+                    "assessmentMode": "ImageDefault"
+                },
+                "enableVMAgentPlatformUpdates": false
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+}
+```
+
+### Failed Metadata Retrieval
+
+```bash
+Failed to retrieve VM metadata: <Error Message>
+```
+
+### Failed Metadata Saving
+
+```bash
+Failed to save VM metadata: <Error Message>
+```
+------------------------------------------------------------
 
 
 
