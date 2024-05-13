@@ -1,3 +1,5 @@
+###Challenge1
+-----------------------------------------------------------------
 # 3 Tier Application Setup
 
 This guide outlines the steps to set up a 3-tier application architecture on Kubernetes, consisting of an Application Tier, Logic Tier, and Database Tier.
@@ -22,6 +24,9 @@ This guide outlines the steps to set up a 3-tier application architecture on Kub
 ##  Archetectuer
 ![alt text](Image/p.png)
 
+
+
+###Challenge2
 --------------------------------------------------------------------------
 # Azure VM Metadata Importer
 
@@ -108,18 +113,52 @@ Enter the key you want to query: osProfile
 }
 ```
 
-### Failed Metadata Retrieval
-
-```bash
-Failed to retrieve VM metadata: <Error Message>
-```
-
-### Failed Metadata Saving
-
-```bash
-Failed to save VM metadata: <Error Message>
-```
+###Challenge3
 ------------------------------------------------------------
+
+
+# Get Value from Nested Object
+
+This function allows you to retrieve a value from a nested dictionary using a key path.
+
+## Usage
+
+```python
+from utils import get_value_from_nested_object
+
+obj1 = {"a": {"b": {"c": "d"}}}
+key1 = "a/b/c"
+print(get_value_from_nested_object(obj1, key1))  # Output: d
+
+obj2 = {"x": {"y": {"z": "a"}}}
+key2 = "x/y/z"
+print(get_value_from_nested_object(obj2, key2))  # Output: a
+```
+
+## Function Signature
+
+```python
+def get_value_from_nested_object(obj, key):
+```
+
+## Parameters
+
+- `obj` : The nested dictionary from which to retrieve the value.
+- `key` : The key path separated by '/' indicating the nested structure.
+
+## Return Value
+
+- Returns the value corresponding to the provided key path if found in the nested dictionary.
+- Returns `None` if the key path is not found or encounters a `KeyError` or `TypeError` during traversal.
+
+## Example
+
+```python
+obj = {"a": {"b": {"c": "d"}}}
+key = "a/b/c"
+print(get_value_from_nested_object(obj, key))  # Output: d
+```
+
 
 
 
