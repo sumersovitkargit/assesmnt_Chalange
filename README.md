@@ -28,7 +28,7 @@ This guide outlines the steps to set up a 3-tier application architecture on Kub
 
 ###Challenge2
 --------------------------------------------------------------------------
-# Azure VM Metadata Importer
+# Azure Metadata
 
 This Python script retrieves metadata of a virtual machine (VM) from Azure and allows you to save it in a JSON file. You can also query specific metadata keys.
 
