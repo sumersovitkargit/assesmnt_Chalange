@@ -1,0 +1,68 @@
+{
+    "location": "eastus",
+    "properties": {
+        "hardwareProfile": {
+            "vmSize": "Standard_D2s_v3"
+        },
+        "storageProfile": {
+            "imageReference": {
+                "publisher": "MicrosoftWindowsDesktop",
+                "offer": "Windows-10",
+                "sku": "win10-22h2-pro-g2",
+                "version": "latest"
+            },
+            "osDisk": {
+                "osType": "Windows",
+                "name": "Windowsrdpterraform_disk1_50c2b081a63043508ff432fc0f485539",
+                "caching": "ReadWrite",
+                "createOption": "FromImage",
+                "managedDisk": {
+                    "id": "/subscriptions/94e12df9-8810-4706-a83d-06770afb5589/resourceGroups/JUMPBOX_VM_TERRAFORM/providers/Microsoft.Compute/disks/Windowsrdpterraform_disk1_50c2b081a63043508ff432fc0f485539"
+                },
+                "deleteOption": "Delete"
+            },
+            "dataDisks": [],
+            "diskControllerType": "SCSI"
+        },
+        "osProfile": {
+            "computerName": "Windowsrdpterra",
+            "adminUsername": "sumer",
+            "windowsConfiguration": {
+                "provisionVMAgent": true,
+                "enableAutomaticUpdates": true,
+                "patchSettings": {
+                    "patchMode": "AutomaticByOS",
+                    "enableHotpatching": false,
+                    "assessmentMode": "ImageDefault"
+                },
+                "enableVMAgentPlatformUpdates": false
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+        "networkProfile": {
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/94e12df9-8810-4706-a83d-06770afb5589/resourceGroups/Jumpbox_VM_Terraform/providers/Microsoft.Network/networkInterfaces/windowsrdpterraform827",
+                    "properties": {
+                        "deleteOption": "Detach"
+                    }
+                }
+            ]
+        },
+        "securityProfile": {
+            "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+            },
+            "securityType": "TrustedLaunch"
+        },
+        "diagnosticsProfile": {
+            "bootDiagnostics": {
+                "enabled": true
+            }
+        },
+        "licenseType": "Windows_Client"
+    }
+}
